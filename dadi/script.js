@@ -1,21 +1,24 @@
-let numPLayer = parseInt(document.querySelector('#number'))
-const numRandom = (Math.random(1) * 6).toFixed(0)
-
-const button = document.querySelector('.button')
+const button = document.querySelector('#button')
+const player = document.querySelector('#num-player')
+const computer = document.querySelector('#num-computer')
+const result = document.querySelector('#result')
 
 button.addEventListener('click', function(){
-    if (numPLayer < numRandom){
-    let result = `Hai perso, il tuo numero: ${numPLayer.valueOf}, quello random: ${numRandom}`
-    document.querySelector('.result').innerHTML = result
+    let numPLayer = Math.floor(Math.random() * 6) + 1;
+    player.innerHTML = numPLayer
 
-}else{
-    let result = `Hai Vinto, il tuo numero: ${numPLayer}, quello random: ${numRandom}`
-    document.querySelector('.result').innerHTML = result
-}
+    const numRandom = Math.floor(Math.random() * 6) + 1;
+    computer.innerHTML = numRandom
 
+    let resultText;
+
+    if (numPLayer > numRandom){
+        resultText = 'Hai vinto'
+    } else if (numPLayer < numRandom){
+        resultText = 'Hai perso'
+    } else{
+        resultText = 'Hai pareggiato'
+    }
+
+    result.innerHTML = resultText
 })
-
-
-
-
-
